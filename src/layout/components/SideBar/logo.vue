@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-27 15:50:34
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-27 16:03:10
+ * @LastEditTime: 2020-02-28 09:39:31
  -->
 <template>
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">
@@ -46,7 +46,7 @@ export default {
 
 <style scoped lang="less">
 .sidebarLogoFade-enter-active {
-  transition: opacity 1.5s;
+  transition: opacity 1.5s ;
 }
 
 .sidebarLogoFade-enter,

@@ -3,14 +3,16 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 13:42:21
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-27 14:54:12
+ * @LastEditTime: 2020-02-27 17:29:04
  -->
  <template>
   <div id="app_wrap">
     <div class="sideBar_wrap">
-      <SideBar />
+      <transition class="sidebar">
+        <SideBar />
+      </transition>
     </div>
-    <div class="main_wrap" :class="{'isCollapse':sidebar}">
+    <div class="main_wrap">
       <NavBar />
       <AppMain />
     </div>
@@ -32,9 +34,6 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    ...mapGetters(["sidebar"])
-  },
   created() {},
   mounted() {},
   watch: {},
@@ -48,8 +47,8 @@ export default {
   .main_wrap {
     width: 100%;
   }
-  .isCollapse {
-      transition: width 1s;
+  .sidebar-enter-active{
+      transition: width .28s
   }
 }
 </style>

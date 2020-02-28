@@ -3,64 +3,99 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 17:12:36
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-27 16:05:35
+ * @LastEditTime: 2020-02-28 16:49:58
  -->
 <template>
   <div id="sideBar_wrap">
-    <Logo :collapse="sidebar"/>
+    <Logo :collapse="sidebar" />
     <el-menu
       default-active="1-4-1"
+      router
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       text-color="#fff"
       background-color="#20222A"
       :unique-opened="false"
+      :collapse-transition="false"
       :collapse="sidebar"
       mode="vertical"
     >
-      <el-submenu index="1">
+      <!-- <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span slot="title">导航一</span>
+          <span slot="title">主页</span>
         </template>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
-        <el-menu-item index="1-3">选项3</el-menu-item>
+        <el-menu-item index="1-1">页面一</el-menu-item>
+        <el-menu-item index="1-2">页面二</el-menu-item>
+        <el-menu-item index="1-3">页面三</el-menu-item>
         <el-submenu index="1-4">
-          <span slot="title">选项4</span>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
+          <span slot="title">页面四</span>
+          <el-menu-item index="1-4-1">页面4-1</el-menu-item>
         </el-submenu>
       </el-submenu>
       <el-menu-item index="2">
         <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
+        <span slot="title">用户</span>
       </el-menu-item>
       <el-menu-item index="3">
         <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
+        <span slot="title">管理</span>
       </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-setting"></i>
+          <span slot="title">设置</span>
+        </template>
+        <el-menu-item index="1-1">基本资料</el-menu-item>
+        <el-menu-item index="1-2">修改密码</el-menu-item>
+      </el-submenu>-->
+      <template v-for="(item,index) in routes">
+        <el-menu-item
+          v-if="item.children === undefind"
+          :key="index"
+          :index="item.path"
+          @click="handleToPage(item.path)"
+        >
+          <Item v-if="item && item.meta" :icon="item.meta.icon" :title="item.meta.title"></Item>
+        </el-menu-item>
+        <el-submenu v-else :index="item.path" :key="index">
+          <template slot="title">
+            <Item v-if="item && item.meta" :icon="item.meta.icon" :title="item.meta.title"></Item>
+          </template>
+          <el-menu-item
+            v-for="(child,childIndex) in item.children"
+            :key="childIndex"
+            :index="child.path"
+          >
+            <Item v-if="item && item.meta" :icon="item.meta.icon" :title="item.meta.title"></Item>
+          </el-menu-item>
+        </el-submenu>
+      </template>
     </el-menu>
   </div>
 </template>
 
 <script>
 import Logo from "./logo";
+import Item from "./item";
 import { mapGetters } from "vuex";
+import SideBarItem from "./SideBarItem";
 export default {
   components: {
-    Logo
+    Logo,
+    Item,
+    SideBarItem
   },
   props: {},
   data() {
     return {};
   },
   computed: {
-    ...mapGetters(["sidebar"])
+    ...mapGetters(["sidebar"]),
+    routes() {
+      return this.$router.options.routes;
+    }
   },
   created() {},
   mounted() {},
@@ -71,7 +106,9 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
-    }
+    },
+    // 点击菜单跳转指定页面
+    handleToPage
   }
 };
 </script>
@@ -79,6 +116,15 @@ export default {
 <style scoped lang="less">
 .el-menu {
   border-right: none;
+}
+.el-menu-item {
+  &.is-active {
+    color: #fff !important;
+    background: #00b38a !important;
+    i {
+      color: #fff !important;
+    }
+  }
 }
 #sideBar_wrap {
   height: 100vh;
