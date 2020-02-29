@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
+    "@vue/babel-preset-jsx": "^1.1.2",
     "element-ui": "^2.13.0",
     "js-cookie": "^2.2.1",
     "vue": "^2.6.11",

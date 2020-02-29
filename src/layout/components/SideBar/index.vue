@@ -9,7 +9,7 @@
   <div id="sideBar_wrap">
     <Logo :collapse="sidebar" />
     <el-menu
-      default-active="1-4-1"
+      default-active="/pageOne"
       router
       class="el-menu-vertical-demo"
       @open="handleOpen"
@@ -50,44 +50,44 @@
         <el-menu-item index="1-1">基本资料</el-menu-item>
         <el-menu-item index="1-2">修改密码</el-menu-item>
       </el-submenu>-->
-      <template v-for="(item,index) in routes">
+      <SideBarItem v-for="(route,index) in routes" :key="index" :item="route"></SideBarItem>
+      <!-- <template v-for="(item,index) in routes">
         <el-menu-item
-          v-if="item.children === undefind"
+          v-if="!item.hidden && item.children === undefind"
           :key="index"
           :index="item.path"
-          @click="handleToPage(item.path)"
         >
-          <Item v-if="item && item.meta" :icon="item.meta.icon" :title="item.meta.title"></Item>
+          <i v-if="item && item.meta" :class="item.meta.icon"></i>
+          <span slot="title">{{item.meta.title}}</span>
         </el-menu-item>
         <el-submenu v-else :index="item.path" :key="index">
           <template slot="title">
-            <Item v-if="item && item.meta" :icon="item.meta.icon" :title="item.meta.title"></Item>
+            <i v-if="item && item.meta" :class="item.meta.icon"></i>
+            <span slot="title">{{item.meta.title}}</span>
           </template>
           <el-menu-item
             v-for="(child,childIndex) in item.children"
             :key="childIndex"
             :index="child.path"
           >
-            <Item v-if="item && item.meta" :icon="item.meta.icon" :title="item.meta.title"></Item>
+            <i v-if="child && child.meta" :class="child.meta.icon"></i>
+            <span slot="title">{{child.meta.title}}</span>
           </el-menu-item>
         </el-submenu>
-      </template>
+      </template> -->
     </el-menu>
   </div>
 </template>
 
 <script>
 import Logo from "./logo";
-import Item from "./item";
 import { mapGetters } from "vuex";
 import SideBarItem from "./SideBarItem";
 export default {
   components: {
     Logo,
-    Item,
     SideBarItem
   },
-  props: {},
   data() {
     return {};
   },
@@ -98,7 +98,9 @@ export default {
     }
   },
   created() {},
-  mounted() {},
+  mounted() {
+    console.log(this.routes)
+  },
   watch: {},
   methods: {
     handleOpen(key, keyPath) {
@@ -108,7 +110,9 @@ export default {
       console.log(key, keyPath);
     },
     // 点击菜单跳转指定页面
-    handleToPage
+    handleToPage(path) {
+      console.log(path);
+    }
   }
 };
 </script>
