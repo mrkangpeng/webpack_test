@@ -8,9 +8,7 @@
  <template>
   <div id="app_wrap">
     <div class="sideBar_wrap">
-      <transition class="sidebar">
-        <SideBar />
-      </transition>
+      <SideBar />
     </div>
     <div class="main_wrap">
       <NavBar />
@@ -46,9 +44,6 @@ export default {
   display: flex;
   .main_wrap {
     width: 100%;
-  }
-  .sidebar-enter-active{
-      transition: width .28s
   }
 }
 </style>

@@ -9,7 +9,7 @@
   <div id="sideBar_wrap">
     <Logo :collapse="sidebar" />
     <el-menu
-      default-active="/pageOne"
+      :default-active="$route.path"
       router
       class="el-menu-vertical-demo"
       @open="handleOpen"
@@ -21,35 +21,6 @@
       :collapse="sidebar"
       mode="vertical"
     >
-      <!-- <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">主页</span>
-        </template>
-        <el-menu-item index="1-1">页面一</el-menu-item>
-        <el-menu-item index="1-2">页面二</el-menu-item>
-        <el-menu-item index="1-3">页面三</el-menu-item>
-        <el-submenu index="1-4">
-          <span slot="title">页面四</span>
-          <el-menu-item index="1-4-1">页面4-1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">用户</span>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <i class="el-icon-document"></i>
-        <span slot="title">管理</span>
-      </el-menu-item>
-      <el-submenu index="4">
-        <template slot="title">
-          <i class="el-icon-setting"></i>
-          <span slot="title">设置</span>
-        </template>
-        <el-menu-item index="1-1">基本资料</el-menu-item>
-        <el-menu-item index="1-2">修改密码</el-menu-item>
-      </el-submenu>-->
       <SideBarItem v-for="(route,index) in routes" :key="index" :item="route"></SideBarItem>
       <!-- <template v-for="(item,index) in routes">
         <el-menu-item
@@ -120,15 +91,6 @@ export default {
 <style scoped lang="less">
 .el-menu {
   border-right: none;
-}
-.el-menu-item {
-  &.is-active {
-    color: #fff !important;
-    background: #00b38a !important;
-    i {
-      color: #fff !important;
-    }
-  }
 }
 #sideBar_wrap {
   height: 100vh;
