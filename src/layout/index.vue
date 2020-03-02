@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 13:42:21
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-27 17:29:04
+ * @LastEditTime: 2020-03-02 11:20:52
  -->
  <template>
   <div id="app_wrap">
@@ -44,6 +44,7 @@ export default {
   display: flex;
   .main_wrap {
     width: 100%;
+    transition: width .28s
   }
 }
 </style>

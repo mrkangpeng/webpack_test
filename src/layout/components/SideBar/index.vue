@@ -3,26 +3,26 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 17:12:36
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-28 16:49:58
+ * @LastEditTime: 2020-03-02 10:30:32
  -->
 <template>
   <div id="sideBar_wrap">
-    <Logo :collapse="sidebar" />
-    <el-menu
-      :default-active="$route.path"
-      router
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      text-color="#fff"
-      background-color="#20222A"
-      :unique-opened="false"
-      :collapse-transition="false"
-      :collapse="sidebar"
-      mode="vertical"
-    >
-      <SideBarItem v-for="(route,index) in routes" :key="index" :item="route"></SideBarItem>
-      <!-- <template v-for="(item,index) in routes">
+      <Logo :collapse="sidebar" />
+      <el-menu
+        :default-active="$route.path"
+        router
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+        text-color="#fff"
+        background-color="#20222A"
+        :unique-opened="false"
+        :collapse-transition="false"
+        :collapse="sidebar"
+        mode="vertical"
+      >
+        <SideBarItem v-for="(route,index) in routes" :key="index" :item="route"></SideBarItem>
+        <!-- <template v-for="(item,index) in routes">
         <el-menu-item
           v-if="!item.hidden && item.children === undefind"
           :key="index"
@@ -45,8 +45,8 @@
             <span slot="title">{{child.meta.title}}</span>
           </el-menu-item>
         </el-submenu>
-      </template> -->
-    </el-menu>
+        </template>-->
+      </el-menu>
   </div>
 </template>
 
@@ -70,7 +70,7 @@ export default {
   },
   created() {},
   mounted() {
-    console.log(this.routes)
+    console.log(this.routes);
   },
   watch: {},
   methods: {
@@ -96,8 +96,5 @@ export default {
   height: 100vh;
   background-color: #20222a;
 }
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 100%;
-  min-height: 400px;
-}
+
 </style>

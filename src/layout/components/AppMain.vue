@@ -3,30 +3,25 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 13:43:18
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-28 13:47:37
+ * @LastEditTime: 2020-03-02 15:30:28
  -->
 <template>
   <section id="appMain_wrap">
-    <Breadcrumb />  
-    <transition name="fade-transform" mode="out-in">
-      <router-view :key="key" />
+    <transition name="fade-transform">
+      <router-view class="app_mian_view" :key="key" />
     </transition>
   </section>
 </template>
 
 <script>
-import Breadcrumb from "@/components/Breadcrumb/index";
 export default {
-  components: {
-    Breadcrumb
-  },
   props: {},
   data() {
     return {};
   },
   computed: {
     key() {
-        return this.$route.path
+      return this.$route.path;
     }
   },
   created() {},
@@ -38,10 +33,26 @@ export default {
 
 <style scoped lang="less">
 #appMain_wrap {
-  min-height: calc(100vh - 50px);
+  height: calc(100vh - 80px);
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #b0b0b0;
+  background-color: #fff;
+}
+.app_mian_view {
+  transition: all 0.28s linear;
+  transition-delay: 0.1s;
+}
+.fade-transform-enter,
+.fade-transform-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(30px, 0);
+  transform: translate(30px, 0);
+}
+.fade-transform-leave-active,
+.fade-transform-enter {
+  opacity: 0;
+  -webkit-transform: translate(-30px, 0);
+  transform: translate(-30px, 0);
 }
 </style>
