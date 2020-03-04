@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 14:33:05
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-03-02 13:47:44
+ * @LastEditTime: 2020-03-03 18:04:47
  -->
 <template>
   <div class="login_wrap">
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
 export default {
   props: {},
   data() {
@@ -45,6 +46,7 @@ export default {
       this.userInfo = {};
     },
     loginIn() {
+        Cookies.set('token','mrkangpeng')
         this.$router.push('/')
     }
   },

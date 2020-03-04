@@ -3,32 +3,19 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 10:38:44
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-03-02 17:09:18
+ * @LastEditTime: 2020-03-03 17:55:40
  -->
 <template>
   <div id="app">
-    <router-view v-if="isReloadAlive" />
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
-  provide() {
-    reload: this.reload;
-  },
   data() {
-    return {
-      isReloadAlive: true
-    };
-  },
-  methods: {
-    reload() {
-      this.isReloadAlive = false;
-      this.$nextTick(() => {
-        this.isReloadAlive = true;
-      });
-    }
+    return {};
   }
 };
 </script>

@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 13:43:46
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-03-02 17:47:51
+ * @LastEditTime: 2020-03-03 17:58:26
  -->
 <template>
   <div id="navBar_wrap">
@@ -28,9 +28,15 @@
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>基本资料</el-dropdown-item>
-              <el-dropdown-item>修改密码</el-dropdown-item>
-              <el-dropdown-item divided>退出登录</el-dropdown-item>
+              <el-dropdown-item>
+                <el-button style="color:#000" type="text">基本资料</el-button>
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <el-button style="color:#000" type="text">修改密码</el-button>
+              </el-dropdown-item>
+              <el-dropdown-item divided>
+                <el-button style="color:#000" type="text" @click="loginOut">退出登录</el-button>
+              </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -41,12 +47,12 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
 import screenfull from "screenfull";
 import Breadcrumb from "@/components/Breadcrumb/index";
 import { mapGetters } from "vuex";
 export default {
   props: {},
-  inject: ["reload"],
   components: {
     Breadcrumb
   },
@@ -76,8 +82,18 @@ export default {
     refreshPage() {
       this.isRotate = true;
       setTimeout(() => {
-          this.isRotate = false
-      },2000)
+        this.isRotate = false;
+      }, 2000);
+    },
+    loginOut() {
+      this.$confirm("你确定退出登录吗？", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(() => {
+        Cookies.remove("token");
+        this.$router.push("/login");
+      }).catch(() => {});
     }
     // throttle(func, delay = 2000) {
     //   let timer = null;
@@ -125,13 +141,14 @@ export default {
       transform: rotate(720deg);
       transition: all 1s linear;
     }
-    .left,.right{
-        display: flex;
-        justify-content: center;
+    .left,
+    .right {
+      display: flex;
+      justify-content: center;
     }
-    .right .logo_info{
-        display: flex;
-        align-items: center;
+    .right .logo_info {
+      display: flex;
+      align-items: center;
     }
   }
 }

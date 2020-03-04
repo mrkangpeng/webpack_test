@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 14:23:25
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-03-02 13:47:35
+ * @LastEditTime: 2020-03-03 18:03:34
  */
 const routes = [{
     path: '/',
@@ -11,6 +11,7 @@ const routes = [{
     redirect: 'pageOne',
     meta: {
       title: '主页',
+      requireAuth:true,
       icon: 'el-icon-location'
     },
     component: () => import('@/layout/index'),
@@ -20,6 +21,7 @@ const routes = [{
         component: () => import('@/views/home/pageOne'),
         meta: {
           title: '页面一',
+          requireAuth:true,
           icon: ''
         },
       },
@@ -29,6 +31,7 @@ const routes = [{
         component: () => import('@/views/home/pageTwo'),
         meta: {
           title: '页面二',
+          requireAuth:true,
           icon: ''
         },
       },
@@ -38,6 +41,7 @@ const routes = [{
         component: () => import('@/views/home/pageThree'),
         meta: {
           title: '页面三',
+          requireAuth:true,
           icon: ''
         },
       },
@@ -46,6 +50,7 @@ const routes = [{
         name: 'pageFour',
         meta: {
           title: '页面四',
+          requireAuth:true,
           icon: ''
         },
         redirect: '/pageFour_one',
@@ -55,6 +60,7 @@ const routes = [{
           name: 'pageFour_one',
           meta: {
             title: '页面四_一',
+            requireAuth:true,
             icon: ''
           },
           component: () => import('@/views/home/pageFour/index')
@@ -67,6 +73,7 @@ const routes = [{
     name: 'user',
     meta: {
       title: "用户",
+      requireAuth:true,
       icon: "el-icon-menu"
     },
     component: () => import('@/layout/index'),
@@ -75,6 +82,7 @@ const routes = [{
       name: 'index',
       meta: {
         title: "用户一",
+        requireAuth:true,
         icon: ""
       },
       component: () => import('@/views/user/index')
@@ -85,6 +93,7 @@ const routes = [{
     name: 'admin',
     meta: {
       title: '管理',
+      requireAuth:true,
       icon: 'el-icon-document'
     },
     component: () => import('@/layout/index'),
@@ -93,6 +102,7 @@ const routes = [{
       name: 'index',
       meta: {
         title: '管理一',
+        requireAuth:true,
         icon: ''
       },
       component: () => import('@/views/admin/index')
@@ -103,6 +113,7 @@ const routes = [{
     name: 'setting',
     meta: {
       title: '设置',
+      requireAuth:true,
       icon: 'el-icon-setting'
     },
     component: () => import('@/layout/index'),
@@ -111,6 +122,7 @@ const routes = [{
         name: 'userInfo',
         meta: {
           title: '基本信息',
+          requireAuth:true,
           icon: ''
         },
         component: () => import('@/views/setting/userInfo')
@@ -120,6 +132,7 @@ const routes = [{
         name: 'modifyPwd',
         meta: {
           title: '修改密码',
+          requireAuth:true,
           icon: ''
         },
         component: () => import('@/views/setting/modifyPwd')
