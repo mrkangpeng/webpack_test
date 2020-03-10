@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-27 15:50:34
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-28 09:39:31
+ * @LastEditTime: 2020-03-10 15:41:55
  -->
 <template>
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">

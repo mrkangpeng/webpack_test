@@ -3,10 +3,10 @@
  * @Autor: kangpeng
  * @Date: 2020-02-26 13:42:21
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-03-02 11:20:52
+ * @LastEditTime: 2020-03-10 15:46:54
  -->
  <template>
-  <div id="app_wrap">
+  <div id="app_wrap" >
     <div class="sideBar_wrap">
       <SideBar />
     </div>
@@ -35,6 +35,9 @@ export default {
   created() {},
   mounted() {},
   watch: {},
+  computed:{
+      ...mapGetters(['sidebar'])
+  },
   methods: {}
 };
 </script>
@@ -44,8 +47,12 @@ export default {
   display: flex;
   .main_wrap {
     width: 100%;
-    transition: width .28s
+    transition: width 0.28s ease-out;
   }
 }
+.sideBar_wrap {
+    background-color: #20222a;
+}
+
 </style>
  
