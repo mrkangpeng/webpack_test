@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-03-13 15:02:23
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-03-13 16:47:17
+ * @LastEditTime: 2020-04-28 10:41:44
  */
 import axios from 'axios'
 import Cookies from 'js-cookie'
@@ -12,7 +12,7 @@ import { Message } from 'element-ui'
 // 环境的切换
 
 if (process.env.NODE_ENV == 'development') {
-    axios.defaults.baseURL = 'xxx'
+    axios.defaults.baseURL = 'http://192.168.0.110:8090/xweb'
 } else if (process.env.NODE_ENV == 'production') {
     axios.defaults.baseURL = 'xxx'
 }

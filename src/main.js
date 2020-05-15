@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-25 16:11:56
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-03-02 14:26:15
+ * @LastEditTime: 2020-05-15 10:29:07
  */
 import Vue from 'vue'
 import ElementUI from 'element-ui';
@@ -14,8 +14,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/css/normalize.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+import {get,post} from './utils/request.js'
+import Mtils from "mtils";
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.use(ElementUI)
 Vue.use(Fragment.Plugin)
+Vue.prototype.get = get
+Vue.prototype.post = post
+Vue.prototype.Mtils = Mtils;
 Vue.prototype.$echarts = echarts
 new Vue({
   router,

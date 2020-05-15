@@ -3,7 +3,7 @@
  * @Autor: kangpeng
  * @Date: 2020-02-25 16:20:05
  * @LastEditors: kangpeng
- * @LastEditTime: 2020-02-26 16:56:10
+ * @LastEditTime: 2020-05-15 10:19:17
  */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动引入js到html
